@@ -27,12 +27,11 @@
         </ResourceDictionary>
     </Window.Resources>
     
-    <Border Name="BackgroundLayer" Background="{StaticResource DarkGray}" CornerRadius="10">
+    <Border Name="BackgroundLayer" Background="{StaticResource DarkGray}" CornerRadius="0">
         <DockPanel>
             <Grid DockPanel.Dock="Top"
                 MouseDown="TopBar_Down"
-                Background="{StaticResource DarkGray}"
-                Margin="5">
+                Background="{StaticResource DarkGray}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
@@ -45,7 +44,7 @@
                            Foreground="{StaticResource DarkGray}">
                 </TextBlock>-->
                 <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-                    <Button Click="Close_OnClick" Style="{StaticResource ModernCloseButton}"/>
+                    <Button Click="Close_OnClick" Style="{StaticResource ModernWindowsCloseButton}"/>
                     <!--<Button Click="Minimise_OnClick" Style="{StaticResource ModernMinimiseButton}"/>
                     <Button Click="Maximise_OnClick" Style="{StaticResource ModernMaximiseButton}"/>-->
                 </StackPanel>
