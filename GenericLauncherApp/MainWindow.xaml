@@ -5,8 +5,100 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GenericLauncherApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="800"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None">
 
-    </Grid>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <ResourceDictionary.Source>Styles/Colours.xaml</ResourceDictionary.Source>
+                </ResourceDictionary>
+                <ResourceDictionary>
+                    <ResourceDictionary.Source>Styles/MenuButtonStyle.xaml</ResourceDictionary.Source>
+                </ResourceDictionary>
+                <ResourceDictionary>
+                    <ResourceDictionary.Source>Styles/WindowTopperButtonStyle.xaml</ResourceDictionary.Source>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <Border Name="BackgroundLayer" Background="{StaticResource DarkGray}" CornerRadius="10">
+        <DockPanel>
+            <Grid DockPanel.Dock="Top"
+                MouseDown="TopBar_Down"
+                Background="{StaticResource DarkGray}"
+                Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <!--<TextBlock Grid.Column="0"
+                           Name="Title"
+                           VerticalAlignment="Center"
+                           Foreground="{StaticResource DarkGray}">
+                </TextBlock>-->
+                <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                    <Button Click="Close_OnClick" Style="{StaticResource ModernCloseButton}"/>
+                    <Button Click="Minimise_OnClick" Style="{StaticResource ModernMinimiseButton}"/>
+                    <Button Click="Maximise_OnClick" Style="{StaticResource ModernMaximiseButton}"/>
+                </StackPanel>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="128" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="64" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Foreground="{StaticResource White}"
+                    Text="H073"
+                    FontFamily="/Assets/Fonts/#Kodchasan"
+                    FontSize="32"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+                </TextBlock>
+
+                <StackPanel
+                    Grid.Column="0"
+                    Grid.Row="1">
+                    <RadioButton
+                        Style="{StaticResource ModernMenuButton}"
+                        Content="Home"
+                        IsChecked="True">
+                    </RadioButton>
+                    <RadioButton
+                        Style="{StaticResource ModernMenuButton}"
+                        Content="Account">
+                    </RadioButton>
+                    <RadioButton
+                        Style="{StaticResource ModernMenuButton}"
+                        Content="Friends">
+                    </RadioButton>
+                    <RadioButton
+                        Style="{StaticResource ModernMenuButton}"
+                        Content="News">
+                    </RadioButton>
+                    <RadioButton
+                        Style="{StaticResource ModernMenuButton}"
+                        Content="Settings">
+                    </RadioButton>
+                </StackPanel>
+
+            </Grid>
+        </DockPanel>
+    </Border>
+
 </Window>
