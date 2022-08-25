@@ -33,9 +33,9 @@
             <Setter
                 Property="Foreground"
                 Value="{StaticResource White}" />
-            <!--<Setter
+            <Setter
                 Property="FontFamily"
-                Value="/Assets/Fonts/#Kodchasan" />-->
+                Value="/Assets/Fonts/#Kodchasan" />
             <Setter
                 Property="FontSize"
                 Value="16" />
