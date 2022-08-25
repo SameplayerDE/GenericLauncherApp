@@ -31,7 +31,7 @@
         <DockPanel>
             <Grid DockPanel.Dock="Top"
                 MouseDown="TopBar_Down"
-                Background="{StaticResource DarkGray}">
+                Background="{StaticResource BlackGray}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
