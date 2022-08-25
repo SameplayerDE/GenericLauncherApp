@@ -41,6 +41,10 @@
       <Resource Include="Assets\Fonts\Kodchasan-SemiBoldItalic.ttf" />
       <None Remove="Assets\Images\x_white.png" />
       <Resource Include="Assets\Images\x_white.png" />
+      <None Remove="Assets\Images\max_white.png" />
+      <Resource Include="Assets\Images\max_white.png" />
+      <None Remove="Assets\Images\min_white.png" />
+      <Resource Include="Assets\Images\min_white.png" />
     </ItemGroup>
 
 </Project>
