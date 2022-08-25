@@ -8,13 +8,38 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Assets\Fonts" />
       <Folder Include="Assets\Images" />
       <Folder Include="Core" />
       <Folder Include="MVVM\Model" />
       <Folder Include="MVVM\View" />
       <Folder Include="MVVM\ViewModel" />
-      <Folder Include="Styles" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\Fonts\Kodchasan-Bold.ttf" />
+      <Resource Include="Assets\Fonts\Kodchasan-Bold.ttf" />
+      <None Remove="Assets\Fonts\Kodchasan-BoldItalic.ttf" />
+      <Resource Include="Assets\Fonts\Kodchasan-BoldItalic.ttf" />
+      <None Remove="Assets\Fonts\Kodchasan-ExtraLight.ttf" />
+      <Resource Include="Assets\Fonts\Kodchasan-ExtraLight.ttf" />
+      <None Remove="Assets\Fonts\Kodchasan-ExtraLightItalic.ttf" />
+      <Resource Include="Assets\Fonts\Kodchasan-ExtraLightItalic.ttf" />
+      <None Remove="Assets\Fonts\Kodchasan-Italic.ttf" />
+      <Resource Include="Assets\Fonts\Kodchasan-Italic.ttf" />
+      <None Remove="Assets\Fonts\Kodchasan-Light.ttf" />
+      <Resource Include="Assets\Fonts\Kodchasan-Light.ttf" />
+      <None Remove="Assets\Fonts\Kodchasan-LightItalic.ttf" />
+      <Resource Include="Assets\Fonts\Kodchasan-LightItalic.ttf" />
+      <None Remove="Assets\Fonts\Kodchasan-Medium.ttf" />
+      <Resource Include="Assets\Fonts\Kodchasan-Medium.ttf" />
+      <None Remove="Assets\Fonts\Kodchasan-MediumItalic.ttf" />
+      <Resource Include="Assets\Fonts\Kodchasan-MediumItalic.ttf" />
+      <None Remove="Assets\Fonts\Kodchasan-Regular.ttf" />
+      <Resource Include="Assets\Fonts\Kodchasan-Regular.ttf" />
+      <None Remove="Assets\Fonts\Kodchasan-SemiBold.ttf" />
+      <Resource Include="Assets\Fonts\Kodchasan-SemiBold.ttf" />
+      <None Remove="Assets\Fonts\Kodchasan-SemiBoldItalic.ttf" />
+      <Resource Include="Assets\Fonts\Kodchasan-SemiBoldItalic.ttf" />
     </ItemGroup>
 
 </Project>

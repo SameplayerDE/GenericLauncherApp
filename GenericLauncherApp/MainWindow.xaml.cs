@@ -24,5 +24,37 @@ namespace GenericLauncherApp
         {
             InitializeComponent();
         }
+
+        private void TopBar_Down(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
+        }
+
+        private void Close_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Maximise_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.MainWindow!.WindowState != WindowState.Maximized)
+            {
+                Application.Current.MainWindow!.WindowState = WindowState.Maximized;
+                BackgroundLayer.CornerRadius = new CornerRadius(0);
+            }
+            else
+            {
+                Application.Current.MainWindow!.WindowState = WindowState.Normal;
+                BackgroundLayer.CornerRadius = new CornerRadius(10);
+            }
+        }
+        
+        private void Minimise_OnClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow!.WindowState = WindowState.Minimized;
+        }
     }
 }
