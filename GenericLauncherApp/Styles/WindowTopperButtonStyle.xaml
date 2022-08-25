@@ -78,4 +78,28 @@
         </Style.Setters>
     </Style>
     
+    <Style 
+        TargetType="{x:Type Button}"
+        x:Key="ModernWindowsCloseButton">
+        <Style.Setters>
+            <Setter
+                Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid
+                            Margin="5"
+                            Background="{TemplateBinding Background}">
+                            <Image
+                                Source="/Assets/Images/x_white.png">
+                            </Image>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter
+                Property="Background"
+                Value="{StaticResource AccentRed}"/>
+        </Style.Setters>
+    </Style>
+    
 </ResourceDictionary>

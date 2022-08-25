@@ -44,10 +44,10 @@
                            VerticalAlignment="Center"
                            Foreground="{StaticResource DarkGray}">
                 </TextBlock>-->
-                <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
                     <Button Click="Close_OnClick" Style="{StaticResource ModernCloseButton}"/>
-                    <Button Click="Minimise_OnClick" Style="{StaticResource ModernMinimiseButton}"/>
-                    <Button Click="Maximise_OnClick" Style="{StaticResource ModernMaximiseButton}"/>
+                    <!--<Button Click="Minimise_OnClick" Style="{StaticResource ModernMinimiseButton}"/>
+                    <Button Click="Maximise_OnClick" Style="{StaticResource ModernMaximiseButton}"/>-->
                 </StackPanel>
             </Grid>
             <Grid>
@@ -98,6 +98,10 @@
                     </RadioButton>
                 </StackPanel>
 
+                <ContentControl Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+                    
+                </ContentControl>
+                
             </Grid>
         </DockPanel>
     </Border>
