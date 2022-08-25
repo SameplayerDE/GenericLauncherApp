@@ -43,12 +43,10 @@ namespace GenericLauncherApp
             if (Application.Current.MainWindow!.WindowState != WindowState.Maximized)
             {
                 Application.Current.MainWindow!.WindowState = WindowState.Maximized;
-                BackgroundLayer.CornerRadius = new CornerRadius(0);
             }
             else
             {
                 Application.Current.MainWindow!.WindowState = WindowState.Normal;
-                BackgroundLayer.CornerRadius = new CornerRadius(10);
             }
         }
         
