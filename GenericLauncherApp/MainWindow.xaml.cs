@@ -17,6 +17,16 @@ namespace GenericLauncherApp
 
         [JsonPropertyName("done")] public int Done { get; set; }
     }
+    
+    public class Comment
+    {
+        //https://jsonplaceholder.typicode.com/comments
+        [JsonPropertyName("postId")] public int PostId { get; set; }
+        [JsonPropertyName("id")] public int Id { get; set; }
+        [JsonPropertyName("name")] public string Name { get; set; }
+        [JsonPropertyName("email")] public string Email { get; set; }
+        [JsonPropertyName("body")] public string Body { get; set; }
+    }
 
     public class Employee
     {
@@ -41,9 +51,10 @@ namespace GenericLauncherApp
         public async void SomeMethod()
         {
             var result = await Get();
-            var document = JsonDocument.Parse(result);
-            var data = document.RootElement.GetProperty("data");
-            var collection = JsonSerializer.Deserialize<List<Employee>>(data.ToString());
+            //Console.WriteLine(result);
+            //var document = JsonDocument.Parse(result);
+            //var data = document.RootElement.GetProperty("data");
+            var collection = JsonSerializer.Deserialize<List<Comment>>(result);
             DataGrid.ItemsSource = collection;
         }
         
@@ -53,10 +64,11 @@ namespace GenericLauncherApp
             using (var client = new HttpClient())
             {
                 //client.BaseAddress = new Uri("http://localhost/Rest/ToDo/todo/");
-                client.BaseAddress = new Uri("https://dummy.restapiexample.com/api/v1/");
+                //client.BaseAddress = new Uri("https://dummy.restapiexample.com/api/v1/");
+                client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/");
                 
                 //var response = await client.GetAsync($"read");
-                var response = await client.GetAsync($"employees");
+                var response = await client.GetAsync($"comments");
                 message = await response.Content.ReadAsStringAsync();
             }
             return message;

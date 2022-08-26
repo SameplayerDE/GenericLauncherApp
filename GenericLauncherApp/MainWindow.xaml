@@ -70,7 +70,7 @@
                     Grid.Column="0"
                     Grid.Row="0"
                     Foreground="{StaticResource White}"
-                    Text="H073"
+                    Text="alisa"
                     FontFamily="/Assets/Fonts/#Kodchasan"
                     FontSize="32"
                     VerticalAlignment="Center"
