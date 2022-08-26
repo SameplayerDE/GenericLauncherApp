@@ -36,7 +36,6 @@ namespace GenericLauncherApp
         public MainWindow()
         {
             InitializeComponent();
-            
         }
         
         public async void SomeMethod()
