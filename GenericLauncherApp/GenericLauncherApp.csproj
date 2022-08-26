@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>WinExe</OutputType>
+        <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp3.1-windows</TargetFramework>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
@@ -45,6 +45,13 @@
       <Resource Include="Assets\Images\max_white.png" />
       <None Remove="Assets\Images\min_white.png" />
       <Resource Include="Assets\Images\min_white.png" />
+      <None Remove="Assets\Images\reload_white.png" />
+      <Resource Include="Assets\Images\reload_white.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+      <PackageReference Include="MySql.Data" Version="8.0.30" />
     </ItemGroup>
 
 </Project>
