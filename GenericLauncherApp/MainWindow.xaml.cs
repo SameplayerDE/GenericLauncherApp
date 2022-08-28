@@ -38,6 +38,18 @@ namespace GenericLauncherApp
         [JsonPropertyName("employee_age")] public int Age { get; set; }
     }
     
+    public class WeatherForecast
+    {
+        [JsonPropertyName("date")]
+        public DateTime Date { get; set; }
+        [JsonPropertyName("temperatureC")]
+        public int TemperatureC { get; set; }
+        [JsonPropertyName("temperatureF")]
+        public int TemperatureF { get; set; }
+        [JsonPropertyName("summary")]
+        public string Summary { get; set; }
+    }
+    
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -50,12 +62,22 @@ namespace GenericLauncherApp
         
         public async void SomeMethod()
         {
-            var result = await Get();
-            //Console.WriteLine(result);
-            //var document = JsonDocument.Parse(result);
-            //var data = document.RootElement.GetProperty("data");
-            var collection = JsonSerializer.Deserialize<List<Comment>>(result);
-            DataGrid.ItemsSource = collection;
+            try
+            {
+                var result = await Get();
+                //Console.WriteLine(result);
+                //var document = JsonDocument.Parse(result);
+                //var data = document.RootElement.GetProperty("data");
+                var collection = JsonSerializer.Deserialize<List<WeatherForecast>>(result);
+                DataGrid.ItemsSource = collection;
+                DataGrid.Visibility = Visibility.Visible;
+                Connection.Visibility = Visibility.Collapsed;
+            }
+            catch (Exception e)
+            {
+                Connection.Visibility = Visibility.Visible;
+                DataGrid.Visibility = Visibility.Collapsed;
+            }
         }
         
         public static async Task<string> Get()
@@ -65,10 +87,12 @@ namespace GenericLauncherApp
             {
                 //client.BaseAddress = new Uri("http://localhost/Rest/ToDo/todo/");
                 //client.BaseAddress = new Uri("https://dummy.restapiexample.com/api/v1/");
-                client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/");
-                
+                //client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/");
+                client.BaseAddress = new Uri("http://212.227.209.159/");
+
                 //var response = await client.GetAsync($"read");
-                var response = await client.GetAsync($"comments");
+                //var response = await client.GetAsync($"comments");
+                var response = await client.GetAsync($"weatherforecast");
                 message = await response.Content.ReadAsStringAsync();
             }
             return message;
