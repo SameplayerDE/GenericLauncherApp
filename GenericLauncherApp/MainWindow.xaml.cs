@@ -9,47 +9,21 @@ using System.Windows.Input;
 
 namespace GenericLauncherApp
 {
-    public class ToDo
+    public class Post
     {
-        [JsonPropertyName("id")] public int Id { get; set; }
-
+        [JsonPropertyName("id")] public int ID { get; set; }
+        [JsonPropertyName("title")] public string Title { get; set; }
+        [JsonPropertyName("content")] public string Content { get; set; }
+        [JsonPropertyName("author")] public int AuthorID { get; set; }
+        [JsonIgnore] public User Author { get; set; }
+    }
+    
+    public class User
+    {
+        [JsonPropertyName("id")] public int ID { get; set; }
         [JsonPropertyName("name")] public string Name { get; set; }
-
-        [JsonPropertyName("done")] public int Done { get; set; }
-    }
-    
-    public class Comment
-    {
-        //https://jsonplaceholder.typicode.com/comments
-        [JsonPropertyName("postId")] public int PostId { get; set; }
-        [JsonPropertyName("id")] public int Id { get; set; }
-        [JsonPropertyName("name")] public string Name { get; set; }
-        [JsonPropertyName("email")] public string Email { get; set; }
-        [JsonPropertyName("body")] public string Body { get; set; }
     }
 
-    public class Employee
-    {
-        //https://dummy.restapiexample.com/api/v1/employees
-        [JsonPropertyName("id")] public int Id { get; set; }
-        [JsonPropertyName("employee_name")] public string Name { get; set; }
-        [JsonPropertyName("profile_image")] public string Path { get; set; }
-        [JsonPropertyName("employee_salary")] public int Salary { get; set; }
-        [JsonPropertyName("employee_age")] public int Age { get; set; }
-    }
-    
-    public class WeatherForecast
-    {
-        [JsonPropertyName("date")]
-        public DateTime Date { get; set; }
-        [JsonPropertyName("temperatureC")]
-        public int TemperatureC { get; set; }
-        [JsonPropertyName("temperatureF")]
-        public int TemperatureF { get; set; }
-        [JsonPropertyName("summary")]
-        public string Summary { get; set; }
-    }
-    
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -64,23 +38,29 @@ namespace GenericLauncherApp
         {
             try
             {
-                var result = await Get();
-                //Console.WriteLine(result);
-                //var document = JsonDocument.Parse(result);
-                //var data = document.RootElement.GetProperty("data");
-                var collection = JsonSerializer.Deserialize<List<WeatherForecast>>(result);
-                DataGrid.ItemsSource = collection;
-                DataGrid.Visibility = Visibility.Visible;
+                var resultPosts = await GetAllPosts();
+                var postCollection = JsonSerializer.Deserialize<List<Post>>(resultPosts);
+
+                foreach (var post in postCollection)
+                {
+                    var responseUser = await GetUserID(post.AuthorID);
+                    var userCollection = JsonSerializer.Deserialize<List<User>>(responseUser);
+
+                    post.Author = userCollection[0];
+                }
+                
+                ItemsControl.ItemsSource = postCollection;
+                ItemsControl.Visibility = Visibility.Visible;
                 Connection.Visibility = Visibility.Collapsed;
             }
             catch (Exception e)
             {
                 Connection.Visibility = Visibility.Visible;
-                DataGrid.Visibility = Visibility.Collapsed;
+                ItemsControl.Visibility = Visibility.Collapsed;
             }
         }
         
-        public static async Task<string> Get()
+        public static async Task<string> GetAllPosts()
         {
             string message = string.Empty;
             using (var client = new HttpClient())
@@ -92,7 +72,25 @@ namespace GenericLauncherApp
 
                 //var response = await client.GetAsync($"read");
                 //var response = await client.GetAsync($"comments");
-                var response = await client.GetAsync($"weatherforecast");
+                var response = await client.GetAsync($"blog/post/all");
+                message = await response.Content.ReadAsStringAsync();
+            }
+            return message;
+        }
+        
+        public static async Task<string> GetUserID(int id)
+        {
+            string message = string.Empty;
+            using (var client = new HttpClient())
+            {
+                //client.BaseAddress = new Uri("http://localhost/Rest/ToDo/todo/");
+                //client.BaseAddress = new Uri("https://dummy.restapiexample.com/api/v1/");
+                //client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com/");
+                client.BaseAddress = new Uri("http://212.227.209.159/");
+
+                //var response = await client.GetAsync($"read");
+                //var response = await client.GetAsync($"comments");
+                var response = await client.GetAsync($"blog/user/{id}");
                 message = await response.Content.ReadAsStringAsync();
             }
             return message;

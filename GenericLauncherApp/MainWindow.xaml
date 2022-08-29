@@ -30,12 +30,12 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    
+
     <Border Name="BackgroundLayer" Background="{StaticResource DarkGray}" CornerRadius="0">
         <DockPanel>
             <Grid DockPanel.Dock="Top"
-                MouseDown="TopBar_Down"
-                Background="{StaticResource BlackGray}">
+                  MouseDown="TopBar_Down"
+                  Background="{StaticResource BlackGray}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="*" />
@@ -43,17 +43,17 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                
-                <Button Click="Update_OnClick" Style="{StaticResource ModernWindowsReloadButton}"/>
+
+                <Button Click="Update_OnClick" Style="{StaticResource ModernWindowsReloadButton}" />
                 <!--<TextBlock Grid.Column="0"
                            Name="Title"
                            VerticalAlignment="Center"
                            Foreground="{StaticResource DarkGray}">
                 </TextBlock>-->
                 <StackPanel Grid.Column="1" Orientation="Horizontal" FlowDirection="RightToLeft">
-                    <Button Click="Close_OnClick" Style="{StaticResource ModernWindowsCloseButton}"/>
-                    <Button Click="Maximise_OnClick" Style="{StaticResource ModernWindowsMaximiseButton}"/>
-                    <Button Click="Minimise_OnClick" Style="{StaticResource ModernWindowsMinimiseButton}"/>
+                    <Button Click="Close_OnClick" Style="{StaticResource ModernWindowsCloseButton}" />
+                    <Button Click="Maximise_OnClick" Style="{StaticResource ModernWindowsMaximiseButton}" />
+                    <Button Click="Minimise_OnClick" Style="{StaticResource ModernWindowsMinimiseButton}" />
                 </StackPanel>
             </Grid>
             <Grid>
@@ -70,7 +70,7 @@
                     Grid.Column="0"
                     Grid.Row="0"
                     Foreground="{StaticResource White}"
-                    Text="alisa"
+                    Text="H073"
                     FontFamily="/Assets/Fonts/#Kodchasan"
                     FontSize="32"
                     VerticalAlignment="Center"
@@ -103,31 +103,48 @@
                         Content="Settings">
                     </RadioButton>
                 </StackPanel>
-                
+
                 <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
-                    <DataGrid Style="{StaticResource ModernDataGrid}" Name="DataGrid">
-                    </DataGrid>
+                    <!--<DataGrid Style="{StaticResource ModernDataGrid}" Name="DataGrid">
+                    </DataGrid>-->
                     <TextBlock Visibility="Collapsed" Name="Connection" Foreground="{StaticResource White}">No Connection</TextBlock>
-                    <!--<ScrollViewer>
+                    <ScrollViewer>
                         <ItemsControl Name="ItemsControl">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <Grid Margin="15, 5, 5, 5">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="2*" />
                                         </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="2*" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
                                         <TextBlock
                                             VerticalAlignment="Center"
                                             FontFamily="/Assets/Fonts/#Kodchasan"
                                             FontSize="28"
-                                            Foreground="White"
-                                            Text="{Binding Name}" />
+                                            Foreground="{StaticResource Orange}"
+                                            Text="{Binding Title}" />
+                                        <TextBlock Grid.Column="1" TextAlignment="Right"
+                                                   VerticalAlignment="Center"
+                                                   FontFamily="/Assets/Fonts/#Kodchasan"
+                                                   FontSize="16"
+                                                   Foreground="{StaticResource AccentOrange}"
+                                                   Text="{Binding Author.Name}" />
+                                        <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
+                                                   VerticalAlignment="Center"
+                                                   TextWrapping="Wrap"
+                                                   FontFamily="/Assets/Fonts/#Kodchasan"
+                                                   FontSize="12"
+                                                   Foreground="White"
+                                                   Text="{Binding Content}" />
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
-                    </ScrollViewer>-->
+                    </ScrollViewer>
                 </Grid>
             </Grid>
         </DockPanel>

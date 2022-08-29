@@ -8,6 +8,7 @@
     <SolidColorBrush x:Key="BlackGray" Color="#212121" />
     <SolidColorBrush x:Key="Black" Color="#000000" />
         
+    <SolidColorBrush x:Key="Orange" Color="#FF993B" />
     <SolidColorBrush x:Key="AccentOrange" Color="#FFC173" />
     <SolidColorBrush x:Key="AccentDarkOrange" Color="#8C744B" />
     
