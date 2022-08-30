@@ -70,7 +70,7 @@
                     Grid.Column="0"
                     Grid.Row="0"
                     Foreground="{StaticResource White}"
-                    Text="H073"
+                    Text="alisa"
                     FontFamily="/Assets/Fonts/#Kodchasan"
                     FontSize="32"
                     VerticalAlignment="Center"
@@ -102,6 +102,11 @@
                         Style="{StaticResource ModernMenuButton}"
                         Content="Settings">
                     </RadioButton>
+                    <MediaElement Name="MediaElement" 
+                                  LoadedBehavior="Manual" 
+                                  UnloadedBehavior="Manual"
+                                  Source="https://cdn.discordapp.com/attachments/273436261468078081/1014162388318158890/240P_1000K_375161052.mp4"></MediaElement>
+
                 </StackPanel>
 
                 <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">

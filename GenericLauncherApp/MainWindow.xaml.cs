@@ -99,6 +99,7 @@ namespace GenericLauncherApp
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             SomeMethod();
+            MediaElement.Play();
             /*try
             {
                 Utils.FetchPosts();
@@ -120,6 +121,13 @@ namespace GenericLauncherApp
         private void Close_OnClick(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            MediaElement.Stop();
+            MediaElement.Close();
+            base.OnClosed(e);
         }
 
         private void Maximise_OnClick(object sender, RoutedEventArgs e)
