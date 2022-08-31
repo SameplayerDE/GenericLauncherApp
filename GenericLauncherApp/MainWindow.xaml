@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GenericLauncherApp"
+        xmlns:wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         ResizeMode="NoResize"
@@ -70,7 +71,7 @@
                     Grid.Column="0"
                     Grid.Row="0"
                     Foreground="{StaticResource White}"
-                    Text="alisa"
+                    Text="H073"
                     FontFamily="/Assets/Fonts/#Kodchasan"
                     FontSize="32"
                     VerticalAlignment="Center"
@@ -105,14 +106,16 @@
                     <MediaElement Name="MediaElement" 
                                   LoadedBehavior="Manual" 
                                   UnloadedBehavior="Manual"
-                                  Source="https://cdn.discordapp.com/attachments/273436261468078081/1014162388318158890/240P_1000K_375161052.mp4"></MediaElement>
-
+                                  Source=""></MediaElement>
                 </StackPanel>
 
                 <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
                     <!--<DataGrid Style="{StaticResource ModernDataGrid}" Name="DataGrid">
                     </DataGrid>-->
                     <TextBlock Visibility="Collapsed" Name="Connection" Foreground="{StaticResource White}">No Connection</TextBlock>
+                    <wpf:WebView2
+                        Name="View2"
+                        Source="https://de.pornhub.com/embed/ph5ea41e670592e"></wpf:WebView2>
                     <ScrollViewer>
                         <ItemsControl Name="ItemsControl">
                             <ItemsControl.ItemTemplate>

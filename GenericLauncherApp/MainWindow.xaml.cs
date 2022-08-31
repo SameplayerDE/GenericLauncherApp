@@ -5,7 +5,10 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
+using Microsoft.Web.WebView2.Core;
+using Microsoft.Web.WebView2.Wpf;
 
 namespace GenericLauncherApp
 {
@@ -96,10 +99,23 @@ namespace GenericLauncherApp
             return message;
         }
         
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void CoreWebView2_NewWindowRequested(object sender, CoreWebView2NewWindowRequestedEventArgs e)
+        {
+            Console.WriteLine(e.Uri);
+            View2.Source = new Uri(e.Uri);
+            e.Handled = true;
+        }
+        
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
             SomeMethod();
-            MediaElement.Play();
+            await View2.EnsureCoreWebView2Async();
+            View2.CoreWebView2.NewWindowRequested += CoreWebView2_NewWindowRequested;
+           // MediaElement.Visibility = Visibility.Collapsed;
+            MediaElement.Source =
+                new Uri(
+                    "https://dv.phncdn.com/videos/201805/25/167673012/720P_4000K_167673012.mp4?ttl=1661959877&ri=1228800&rs=4000&ipa=120.16.227.101&hash=57a6528da96dfade17ac5eb2f8c35dd6");
+                //MediaElement.Play();
             /*try
             {
                 Utils.FetchPosts();
@@ -151,5 +167,21 @@ namespace GenericLauncherApp
         {
             SomeMethod();
         }
+
+        private void FrameworkElement_OnSourceUpdated(object? sender, DataTransferEventArgs e)
+        {
+            Console.WriteLine("Hallo");
+        }
+
+        private void WebView2_OnSourceChanged(object? sender, CoreWebView2SourceChangedEventArgs e)
+        {
+            Console.WriteLine("Hallo");
+        }
+
+        private void FrameworkElement_OnRequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
+        {
+            Console.WriteLine("Hallo");
+        }
+
     }
 }

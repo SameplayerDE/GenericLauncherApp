@@ -51,6 +51,7 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+      <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1340-prerelease" />
       <PackageReference Include="MySql.Data" Version="8.0.30" />
     </ItemGroup>
 
